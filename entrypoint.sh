@@ -1,4 +1,5 @@
 #!/bin/bash
-set -x
+set -euxo pipefail
 export PATH="$PATH:$(npm bin)"
 cdk --version
+/bin/bash
