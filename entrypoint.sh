@@ -1,5 +1,5 @@
 #!/bin/sh
 set -euxo pipefail
-export PATH="$PATH:$(npm bin)"
+export PATH="$PATH:$(cd ../ && npm bin)"
 cdk --version
 /bin/sh
