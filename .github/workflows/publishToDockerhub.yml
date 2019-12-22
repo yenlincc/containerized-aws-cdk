@@ -12,11 +12,11 @@ jobs:
     steps:
         - uses: actions/checkout@v1
         - name: Publish to GitHub Package
-            uses: elgohr/Publish-Docker-Github-Action@2.11
-            with:
-                # publish to github package instead of DockerHub
-                registry: docker.pkg.github.com
-                name: thinkthenrant/containerized/aws-cdk
-                username: thinkthenrant
-                password: ${{ secrets.GITHUB_PACKAGE_PSA_TOKEN }}
-                tag_names: true
+          uses: elgohr/Publish-Docker-Github-Action@2.11
+          with:
+            # publish to github package instead of DockerHub
+            registry: docker.pkg.github.com
+            name: thinkthenrant/containerized/aws-cdk
+            username: thinkthenrant
+            password: ${{ secrets.GITHUB_PACKAGE_PSA_TOKEN }}
+            tag_names: true
