@@ -28,6 +28,7 @@ jobs:
                   password: ${{ secrets.GITHUB_PACKAGE_PSA_TOKEN }}
                   tag_names: true
     test:
+        runs-on: ubuntu-latest
         needs: buildAndRelease
         container: docker:19.03.2
         steps:
