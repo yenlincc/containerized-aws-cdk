@@ -16,7 +16,7 @@ jobs:
           with:
             # publish to github package instead of DockerHub
             registry: docker.pkg.github.com
-            name: thinkthenrant/containerized/aws-cdk
-            username: thinkthenrant
+            name: ThinkThenRant/containerized-aws-cdk/aws-cdk
+            username: hencrice
             password: ${{ secrets.GITHUB_PACKAGE_PSA_TOKEN }}
             tag_names: true
