@@ -7,7 +7,7 @@ on:
             - 'v*-cdk-release*'
 
 jobs:
-  build:
+  buildAndRelease:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v1
@@ -27,3 +27,13 @@ jobs:
             username: hencrice
             password: ${{ secrets.GITHUB_PACKAGE_PSA_TOKEN }}
             tag_names: true
+
+    test:
+        needs: buildAndRelease
+        container: docker:19.03.2
+        steps:
+            - name: Pull the latest image and test
+              run: |
+                docker pull thinkthenrant/containerized-aws-cdk
+                mkdir myCdkApp
+                docker run -it -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp test -t
