@@ -38,5 +38,6 @@ After your container started, run:
 ```
 cdk init
 ```
+and follow along!
 
 More information: https://docs.aws.amazon.com/cdk/index.html
