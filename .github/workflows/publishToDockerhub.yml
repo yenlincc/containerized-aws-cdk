@@ -12,28 +12,27 @@ jobs:
         steps:
             - uses: actions/checkout@v1
             - name: Build and publish to DockerHub
-            uses: elgohr/Publish-Docker-Github-Action@2.11
-            with:
-                name: thinkthenrant/containerized-aws-cdk
-                username: thinkthenrant
-                password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
-                tag_names: true
+              uses: elgohr/Publish-Docker-Github-Action@2.11
+              with:
+                  name: thinkthenrant/containerized-aws-cdk
+                  username: thinkthenrant
+                  password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+                  tag_names: true
             - name: Build and publish to GitHub Packages
-            uses: elgohr/Publish-Docker-Github-Action@2.11
-            with:
-                # publish to github package instead of DockerHub
-                registry: docker.pkg.github.com
-                name: thinkthenrant/containerized-aws-cdk/aws-cdk
-                username: hencrice
-                password: ${{ secrets.GITHUB_PACKAGE_PSA_TOKEN }}
-                tag_names: true
-
+              uses: elgohr/Publish-Docker-Github-Action@2.11
+              with:
+                  # publish to github package instead of DockerHub
+                  registry: docker.pkg.github.com
+                  name: thinkthenrant/containerized-aws-cdk/aws-cdk
+                  username: hencrice
+                  password: ${{ secrets.GITHUB_PACKAGE_PSA_TOKEN }}
+                  tag_names: true
     test:
         needs: buildAndRelease
         container: docker:19.03.2
         steps:
             - name: Pull the latest image and test  
               run: |
-                docker pull thinkthenrant/containerized-aws-cdk
-                mkdir myCdkApp
-                docker run -it -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp test -t
+                  docker pull thinkthenrant/containerized-aws-cdk
+                  mkdir myCdkApp
+                  docker run -it -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp test -t
