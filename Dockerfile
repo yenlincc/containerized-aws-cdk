@@ -1,5 +1,6 @@
 FROM node:lts-alpine
-COPY package.json package.json
-RUN npm install -g
 ENV PATH=$PATH:/home/node/.npm-global/bin
+COPY package.json package.json
+RUN npm bin -g
+RUN npm install -g
 RUN cdk --version
