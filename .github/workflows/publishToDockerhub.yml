@@ -36,4 +36,4 @@ jobs:
               run: |
                   docker pull thinkthenrant/containerized-aws-cdk
                   mkdir myCdkApp
-                  docker run -it -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp test -t
+                  docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp test -t
