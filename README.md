@@ -20,11 +20,11 @@ docker pull docker.pkg.github.com/thinkthenrant/containerized-aws-cdk/aws-cdk:la
 Then, create a directory that we will store CDK apps in and launch the
 containerized CDK image:
 ```
-mkdir cdkApps
+mkdir myCdkApp
 
 # if pulled from DockerHub
-docker run -it -v $PWD/cdkApps:/cdkApps -w=/cdkApps thinkthenrant/containerized-aws-cdk
+docker run -it -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp thinkthenrant/containerized-aws-cdk
 
 # if pulled from GitHub Packages
-docker run -it -v $PWD/cdkApps:/cdkApps -w=/cdkApps docker.pkg.github.com/thinkthenrant/containerized-aws-cdk/aws-cdk
+docker run -it -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp docker.pkg.github.com/thinkthenrant/containerized-aws-cdk/aws-cdk
 ```
