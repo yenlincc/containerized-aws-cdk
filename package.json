@@ -1,0 +1,24 @@
+{
+    "name": "containerized-aws-cdk",
+    "private": true,
+    "description": "A containerized, complete AWS CDK setup so that you can start working on your CDK app in no time without worrying about installation",
+    "version": "0.0.1",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/ThinkThenRant/containerized-aws-cdk.git"
+    },
+    "keywords": ["AWS CDK", "containerized", "container"],
+    "author": "3822365+hencrice@users.noreply.github.com",
+    "license": "Apache-2.0",
+    "bugs": {
+      "url": "https://github.com/ThinkThenRant/containerized-aws-cdk/issues"
+    },
+    "homepage": "https://github.com/ThinkThenRant/containerized-aws-cdk",
+    "dependencies": {
+        "aws-cdk": ">=1.19.0 <2.0.0"
+    }
+  }
