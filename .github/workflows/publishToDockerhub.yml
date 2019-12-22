@@ -14,7 +14,7 @@ jobs:
         - name: Build and publish to DockerHub
           uses: elgohr/Publish-Docker-Github-Action@2.11
           with:
-            name: containerized-aws-cdk
+            name: thinkthenrant/containerized-aws-cdk
             username: thinkthenrant
             password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
             tag_names: true
