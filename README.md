@@ -1,5 +1,6 @@
 # containerized-aws-cdk
 ![Build status](https://github.com/ThinkThenRant/containerized-aws-cdk/workflows/Publish%20Docker%20image/badge.svg "Status")
+
 A containerized, complete AWS CDK setup so that you can start working on your CDK app in no time without worrying about installation
 
 ## Usage
