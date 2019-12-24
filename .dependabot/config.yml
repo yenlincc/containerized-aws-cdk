@@ -7,13 +7,9 @@ update_configs:
     # pull requests
     default_reviewers:
       - "hencrice"
-    default_labels:
-      - "dependabot-npm"
   # keep the base image up-to-date
   - package_manager: "docker"
     directory: "/"
     update_schedule: "weekly"
     default_reviewers:
       - "hencrice"
-    default_labels:
-      - "dependabot-docker"
