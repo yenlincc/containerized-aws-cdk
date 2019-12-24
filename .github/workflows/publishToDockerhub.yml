@@ -18,6 +18,8 @@ jobs:
                   mkdir myCdkApp
                   docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp thinkthenrant/containerized-aws-cdk:latest -t
                   docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp thinkthenrant/containerized-aws-cdk/aws-cdk:latest -t
+            # By explicily building the image before starting the "Publish Docker" GitHub Action, the container layers we just
+            # built and tested will be cached and reused in the "Publish Docker" Action.
             - name: Publish to DockerHub
               uses: elgohr/Publish-Docker-Github-Action@2.11
               with:

@@ -1,12 +1,15 @@
-name: Build Docker image and test
+name: Build Docker image and test locally
 on: pull_request
 
 jobs:
     buildAndTest:
         runs-on: ubuntu-latest
         steps:
-            - name: Build an image image and test
+            - uses: actions/checkout@v1
+            - name: Build an image image and test locally
               run: |
-                  docker build -t test:latest .
+                  docker build -t thinkthenrant/containerized-aws-cdk:latest .
+                  docker build -t thinkthenrant/containerized-aws-cdk/aws-cdk:latest .
                   mkdir myCdkApp
-                  docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp test:latest -t
+                  docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp thinkthenrant/containerized-aws-cdk:latest -t
+                  docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp thinkthenrant/containerized-aws-cdk/aws-cdk:latest -t
