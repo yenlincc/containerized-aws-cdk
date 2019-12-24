@@ -7,21 +7,18 @@ on:
             - 'v*-cdk-release*'
 
 jobs:
-    buildAndTest:
+    buildTestRelease:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
-            - name: Build an image image and test
+            - name: Build an image image and test locally
               run: |
-                  docker build -t test:latest .
+                  docker build -t thinkthenrant/containerized-aws-cdk:latest .
+                  docker build -t thinkthenrant/containerized-aws-cdk/aws-cdk:latest .
                   mkdir myCdkApp
-                  docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp test:latest -t
-    Release:
-        runs-on: ubuntu-latest
-        needs: buildAndTest
-        steps:
-            - uses: actions/checkout@v1
-            - name: Build and publish to DockerHub
+                  docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp thinkthenrant/containerized-aws-cdk:latest -t
+                  docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp thinkthenrant/containerized-aws-cdk/aws-cdk:latest -t
+            - name: Publish to DockerHub
               uses: elgohr/Publish-Docker-Github-Action@2.11
               with:
                   name: thinkthenrant/containerized-aws-cdk
