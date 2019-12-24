@@ -1,0 +1,12 @@
+name: Build Docker image and test
+on: pull_request
+
+jobs:
+    buildAndTest:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build an image image and test
+              run: |
+                  docker build -t test:latest .
+                  mkdir myCdkApp
+                  docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp test:latest -t

@@ -7,8 +7,17 @@ on:
             - 'v*-cdk-release*'
 
 jobs:
-    buildAndRelease:
+    buildAndTest:
         runs-on: ubuntu-latest
+        steps:
+            - name: Build an image image and test
+              run: |
+                  docker build -t test:latest .
+                  mkdir myCdkApp
+                  docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp test:latest -t
+    Release:
+        runs-on: ubuntu-latest
+        needs: buildAndTest
         steps:
             - uses: actions/checkout@v1
             - name: Build and publish to DockerHub
@@ -27,13 +36,3 @@ jobs:
                   username: hencrice
                   password: ${{ secrets.GITHUB_PACKAGE_PSA_TOKEN }}
                   tag_names: true
-    test:
-        runs-on: ubuntu-latest
-        needs: buildAndRelease
-        container: docker:19.03.2
-        steps:
-            - name: Pull the latest image and test  
-              run: |
-                  docker pull thinkthenrant/containerized-aws-cdk
-                  mkdir myCdkApp
-                  docker run -v $PWD/myCdkApp:/myCdkApp -w=/myCdkApp thinkthenrant/containerized-aws-cdk -t
