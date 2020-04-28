@@ -19,6 +19,6 @@
     },
     "homepage": "https://github.com/ThinkThenRant/containerized-aws-cdk",
     "dependencies": {
-        "aws-cdk": "1.33.1"
+        "aws-cdk": "1.35.0"
     }
   }
